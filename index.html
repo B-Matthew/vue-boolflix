@@ -19,9 +19,19 @@
         <button @click="searchMovie" type="button" name="button">Search</button>
       </div>
       <ul>
-        <li v-for="item in array">
+        <li v-for="item in movies">
           <h2>{{item.title}}</h2>
           <h2>{{item.original_title}}</h2>
+          <img :src="imgForm.imgPath + imgForm.imgSize + item.poster_path" alt="">
+          <img class="flags" v-if='item.original_language == "it"' :src="flags.flagIt" alt="">
+          <img class="flags" v-else-if='item.original_language == "en"' :src="flags.flagEn" alt="">
+          <h2 v-else>{{item.original_language}}</h2>
+          <h2>{{item.vote_average}}</h2>
+        </li>
+        <li v-for="item in tvSeries">
+          <h2>{{item.name}}</h2>
+          <h2>{{item.original_name}}</h2>
+          <img :src="imgForm.imgPath + imgForm.imgSize + item.poster_path" alt="">
           <img class="flags" v-if='item.original_language == "it"' :src="flags.flagIt" alt="">
           <img class="flags" v-else-if='item.original_language == "en"' :src="flags.flagEn" alt="">
           <h2 v-else>{{item.original_language}}</h2>
