@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: red;
+}
+
+.container {
+  width: 90%;
+  margin: auto;
+}
+
+input {
+  padding: 10px 15px;
+  border-radius: 10px;
+  border:none;
+  outline: none;
+}
+
+button {
+  padding: 10px 15px;
+  border-radius: 10px;
+  border:none;
+  outline: none;
+  cursor: pointer;
+}
