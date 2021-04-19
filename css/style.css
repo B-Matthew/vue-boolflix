@@ -27,3 +27,8 @@ button {
   outline: none;
   cursor: pointer;
 }
+
+.flags {
+  width: 50px;
+  height: 30px;
+}
