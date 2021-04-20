@@ -14,30 +14,42 @@
   </head>
   <body>
     <div class="container">
-      <div class="row">
-        <input @keyup.enter="searchMovie" v-model="value" type="text" name="" value="" placeholder="inserisci il titolo">
-        <button @click="searchMovie" type="button" name="button">Search</button>
-      </div>
+    <header>
+      <img @click="clearArray()"id="logo" src="img/site-logo.png" alt="">
       <ul>
-        <li v-for="item in movies">
-          <h2>{{item.title}}</h2>
-          <h2>{{item.original_title}}</h2>
-          <img :src="imgForm.imgPath + imgForm.imgSize + item.poster_path" alt="">
-          <img class="flags" v-if='item.original_language == "it"' :src="flags.flagIt" alt="">
-          <img class="flags" v-else-if='item.original_language == "en"' :src="flags.flagEn" alt="">
-          <h2 v-else>{{item.original_language}}</h2>
-          <h2>{{item.vote_average}}</h2>
+        <li> <input @keyup.enter="searchMovie" v-model="value" type="text" name="" value="" placeholder="inserisci il titolo"></li>
+        <li><button @click="searchMovie" type="button" name="button">Search</button></li>
+        <li><i id="bell" class="fas fa-bell"><span id="notify">3</span></i></li>
+        <li><img id="user" src="img/llXO017.png" alt=""> </li>
+      </ul>
+    </header>
+    <main>
+      <img v-if="movies-length == 0 && tvSeries.length == 0" id="show" src="img/site-logo.png" alt="">
+      <ul>
+        <li class="list" v-for="item in movies">
+          <img class="cards" :src="getImage(item.poster_path)" alt="">
+          <div class="description-cards">
+            <h3>Titolo : {{item.title}}</h3>
+            <h3 v-if="item.title != item.original_title">Titolo originale : {{item.original_title}}</h3>
+            <h3 id="language">Lingua : <img class="flags" v-if="isFlaggable(item.original_language)" :src="'img/' + getFlag(item.original_language)" alt=""></h3>
+            <h3 v-else>{{item.original_language}}</h3>
+            <h3>Voto : <i class="stars" v-for="(star,index) in 5" :class="index < getVoteInteger(item.vote_average) ? 'fas fa-star' : 'far fa-star'"></i></h3>
+            <p><b>Overview</b> : {{sliceOverview(item.overview)}}</p>
+          </div>
         </li>
-        <li v-for="item in tvSeries">
-          <h2>{{item.name}}</h2>
-          <h2>{{item.original_name}}</h2>
-          <img :src="imgForm.imgPath + imgForm.imgSize + item.poster_path" alt="">
-          <img class="flags" v-if='item.original_language == "it"' :src="flags.flagIt" alt="">
-          <img class="flags" v-else-if='item.original_language == "en"' :src="flags.flagEn" alt="">
-          <h2 v-else>{{item.original_language}}</h2>
-          <h2>{{item.vote_average}}</h2>
+        <li class="list" v-for="item in tvSeries">
+          <img class="cards" :src="getImage(item.poster_path)" alt="">
+          <div class="description-cards">
+            <h3>Titolo : {{item.name}}</h3>
+            <h3 v-if="item.name != item.original_name">Titolo originale : {{item.original_name}}</h3>
+            <h3 id="language">Lingua : <img class="flags" v-if="isFlaggable(item.original_language)" :src="'img/' + getFlag(item.original_language)" alt=""></h3>
+            <h3 v-else>{{item.original_language}}</h3>
+            <h3>Voto : <i class="stars" v-for="(star,index) in 5" :class="index < getVoteInteger(item.vote_average) ? 'fas fa-star' : 'far fa-star'"></i></h3>
+            <p><b>Overview</b> : {{sliceOverview(item.overview)}}</p>
+          </div>
         </li>
       </ul>
-    </div>
-  </body>
+    </main>
+  </div>
+</body>
 </html>

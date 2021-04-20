@@ -1,3 +1,6 @@
+/* REGOLE GENERALI */
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -5,30 +8,141 @@
 }
 
 body {
-  background-color: red;
+  background-color: #333333;
+  color: white;
+  font-family: 'Rubik', sans-serif;
 }
 
-.container {
-  width: 90%;
-  margin: auto;
+
+
+/* HEADER */
+
+header {
+  background-color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  height: 100px;
+}
+
+header ul {
+  display: flex;
+  list-style: none;
+  align-items: center;
+}
+
+header ul li {
+  margin: 0 15px;
+}
+
+header #logo {
+  height: 100px;
+  width: 290px;
 }
 
 input {
   padding: 10px 15px;
-  border-radius: 10px;
   border:none;
   outline: none;
+  font-size: 15px;
 }
 
 button {
-  padding: 10px 15px;
+  padding: 12px 18px;
   border-radius: 10px;
   border:none;
   outline: none;
   cursor: pointer;
 }
 
-.flags {
+#bell {
+  color: white;
+  font-size: 30px;
+  position: relative;
+  vertical-align: baseline;
+}
+
+#notify {
+  position: absolute;
+  background-color: red;
+  border-radius: 50%;
+  padding: 3px 5px;
+  left: 12px;
+  font-size: 10px;
+}
+
+#user {
   width: 50px;
-  height: 30px;
+  height: 50px;
+}
+
+/* REGOLE MAIN */
+main {
+  position: relative;
+  height: calc(100vh - 100px);
+}
+
+#show {
+  position: absolute;
+  height: 200px;
+  width: 550px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+main ul {
+  display: flex;
+  list-style-type: none;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+
+.list {
+  width: 342px;
+  height: 480px;
+  margin: 30px 30px;
+  transition: 0.3s;
+  background: linear-gradient(180deg, rgba(0,0,0,1) 30%, rgba(253,45,45,1) 100%);
+}
+
+.cards {
+  width: 342px;
+  height: 480px;
+}
+
+.description-cards {
+  display: none;
+}
+
+.list:hover .cards{
+  display: none;
+}
+
+.list:hover .description-cards{
+  display: block;
+}
+
+.list:hover  {
+  transform: scale(1.03);
+  box-shadow: 0px 0px 3px 4px gray;;
+}
+/* cards style */
+.stars {
+  color: #ffff00;
+}
+
+.flags {
+  width: 20px;
+  height: 15px;
+}
+
+#language {
+  display: inline-block;
+}
+
+main h3, p {
+  margin: 15px;
 }

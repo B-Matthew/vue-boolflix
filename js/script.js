@@ -6,16 +6,11 @@ function initVue() {
       movies:[],
       tvSeries: [],
       value: "",
-      flags: {
-        flagEn: "img/Inglese.png",
-        flagIt: "img/Italia.jpg"
-      },
       imgForm:{
         imgPath: "https://image.tmdb.org/t/p/",
         imgSize:"w342",
+      },
     },
-  },
-
 
     methods:{
       searchMovie: function () {
@@ -42,12 +37,40 @@ function initVue() {
           console.log(this.tvSeries);
         });
       },
-      // getVoteInteger: function (){
-      //   for (var i = 0; i < this.movies.length; i++) {
-      //     const item = this.movies[i];
-      //     Math.ceil(item.vote_average);
-      //   }
-      // }
+      getVoteInteger: function(vote) {
+        if (vote == 0) {
+          return 1
+        }
+        return parseInt(Math.ceil(vote / 2))
+      },
+      getFlag: function(lang) {
+        switch(lang) {
+          case 'en' : return 'Inglese.png';
+          case 'it' : return 'Italia.jpg';
+        }
+        return lang
+      },
+      isFlaggable: function(lang) {
+        return lang == 'en' || lang == 'it';
+      },
+      getImage: function(image) {
+        if (!image) {
+          return 'img/unknown.jpg'
+        }else {
+          return this.imgForm.imgPath + this.imgForm.imgSize + image
+        }
+      },
+      sliceOverview: function(text) {
+        if (text.length > 500) {
+
+          return text.slice(0,500) + "...";
+        }else if(text.length == 0) {
+
+          return "No overview yet"
+        }
+        return text;
+      },
+      
     },
   });
 }
@@ -55,6 +78,5 @@ function initVue() {
 function init() {
   initVue();
 }
-
 
 $(document).ready(init);
