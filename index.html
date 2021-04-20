@@ -15,7 +15,7 @@
   <body>
     <div class="container">
     <header>
-      <img @click="clearArray()"id="logo" src="img/site-logo.png" alt="">
+      <img id="logo" src="img/site-logo.png" alt="">
       <ul>
         <li> <input @keyup.enter="searchMovie" v-model="value" type="text" name="" value="" placeholder="inserisci il titolo"></li>
         <li><button @click="searchMovie" type="button" name="button">Search</button></li>
@@ -24,7 +24,9 @@
       </ul>
     </header>
     <main>
-      <img v-if="movies-length == 0 && tvSeries.length == 0" id="show" src="img/site-logo.png" alt="">
+      <div v-if="movies-length == 0 && tvSeries.length == 0" class="menu">
+        <img  id="show" src="img/site-logo.png" alt="">
+      </div>
       <ul>
         <li class="list" v-for="item in movies">
           <img class="cards" :src="getImage(item.poster_path)" alt="">
