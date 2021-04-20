@@ -36,6 +36,7 @@ function initVue() {
           this.tvSeries = data.data.results;
           console.log(this.tvSeries);
         });
+        this.value = "";
       },
       getVoteInteger: function(vote) {
         if (vote == 0) {
@@ -70,7 +71,7 @@ function initVue() {
         }
         return text;
       },
-      
+
     },
   });
 }
